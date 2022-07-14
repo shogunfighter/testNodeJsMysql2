@@ -1,0 +1,9 @@
+{
+  "notes": "Basically, this is the setup of the database. For the original configuration, go check `docker-compose.yml`",
+  "host": "localhost",
+  "user": "root",
+  "password": "helloworld",
+  "database": "mydb",
+  "port": 3308,
+  "debug": false
+}

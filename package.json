@@ -1,0 +1,27 @@
+{
+  "name": "nodemysql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docker-compose-up": "docker-compose up -d",
+    "docker-compose-down": "docker-compose down",
+    "start": "node ./src/index.js",
+    "start_1": "node ./src/A1_demo_create_db.js",
+    "start_2": "node ./src/A2_demo_create_table.js",
+    "start_3": "node ./src/A3_demo_db_insert.js",
+    "start_4": "node ./src/A4_demo_db_select.js",
+    "start_5": "node ./src/A5_demo_db_where.js",
+    "start_6": "node ./src/A6_demo_db_orderby.js",
+    "start_7": "node ./src/A7_demo_db_delete.js",
+    "start_8": "node ./src/A8_demo_db_drop_table.js",
+    "start_9": "node ./src/A9_demo_db_update.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mysql2": "^2.3.3"
+  }
+}
