@@ -1,15 +1,11 @@
-const mysql = require('mysql2');
-const {host, user, password, port, database, debug} = require("./db_config.json");
+// https://www.w3schools.com/nodejs/nodejs_mysql_select.asp
 
-const con = mysql.createConnection({
-    host,
-    user,
-    password,
-    port,
-    database,
-    debug
-});
+const DB_NAME = "mydb";
 
+const {createConnection} = require("./DBService");
+const con = createConnection(DB_NAME);
+
+// Select all records from the "customers" table, and display the result object:
 con.connect(function(err) {
     if (err) throw err;
     con.query("SELECT * FROM customers", function (err, result, fields) {
@@ -18,18 +14,20 @@ con.connect(function(err) {
     });
 });
 
-con.connect(function(err) {
-    if (err) throw err;
-    con.query("SELECT name, address FROM customers", function (err, result, fields) {
-        if (err) throw err;
-        console.log(result);
-    });
-});
-
-con.connect(function(err) {
-    if (err) throw err;
-    con.query("SELECT name, address FROM customers", function (err, result, fields) {
-        if (err) throw err;
-        console.log(fields);
-    });
-});
+// // Select name and address from the "customers" table, and display the return object:
+// con.connect(function(err) {
+//     if (err) throw err;
+//     con.query("SELECT name, address FROM customers", function (err, result, fields) {
+//         if (err) throw err;
+//         console.log(result);
+//     });
+// });
+//
+// // Select all records from the "customers" table, and display the fields object:
+// con.connect(function(err) {
+//     if (err) throw err;
+//     con.query("SELECT name, address FROM customers", function (err, result, fields) {
+//         if (err) throw err;
+//         console.log(fields);
+//     });
+// });

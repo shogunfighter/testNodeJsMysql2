@@ -1,14 +1,9 @@
-const mysql = require('mysql2');
-const {host, user, password, port, database, debug} = require("./db_config.json");
+// https://www.w3schools.com/nodejs/nodejs_mysql_where.asp
 
-const con = mysql.createConnection({
-    host,
-    user,
-    password,
-    port,
-    database,
-    debug
-});
+const DB_NAME = "mydb";
+
+const {createConnection} = require("./DBService");
+const con = createConnection(DB_NAME);
 
 con.connect(function(err) {
     if (err) throw err;

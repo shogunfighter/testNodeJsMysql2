@@ -1,3 +1,5 @@
+// https://www.w3schools.com/nodejs/nodejs_mysql_orderby.asp
+
 const mysql = require('mysql2');
 const {host, user, password, port, database, debug} = require("./db_config.json");
 

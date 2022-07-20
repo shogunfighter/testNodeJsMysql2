@@ -1,14 +1,9 @@
 const mysql = require('mysql2');
+const {host, user, password, port, debug} = require("./db_config.json");
 
-// lookup the values in docker-compose.yml
-const con = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'helloworld',
-    database: 'testapp',
-    port: 3308,
-    debug: false
-});
+const con = mysql.createConnection(
+    {host, user, password, port, debug}
+);
 
 con.connect(function(err) {
     if (err) throw err;
