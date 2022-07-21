@@ -1,5 +1,5 @@
 {
-  "notes": "Basically, this is the setup of the database. For the original configuration, go check `docker-compose.yml`",
+  "notes": "Basically, this is the setup of the database used in our step modules. For the original configuration, go check `docker-compose.yml`",
   "host": "localhost",
   "user": "root",
   "password": "helloworld",

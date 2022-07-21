@@ -16,7 +16,7 @@ MYSQL_DATABASE: testapp
 | server | mysql-development |
 | username | root |
 | password | helloworld |
-| database | testapp |
+| database | mydb |
 "# testNodeJsMysql2" 
 
 ##### About the this repo
@@ -51,5 +51,6 @@ $ npm run start_7
 $ npm run start_8
 $ npm run start_9
 $ npm run start_10
+$ npm run start_11_precreate_tables         // this is required for demo 11 since the demo 11 uses 2 new tables
 $ npm run start_11
 ```
