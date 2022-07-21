@@ -25,3 +25,31 @@ This repo is just a test to use a lean approach for backend using docker / nodej
 The sql tutorials are hosted over w3schools which is an excellent site for beginners. \ 
 
 [LINK](https://www.w3schools.com/nodejs/nodejs_mysql_create_db.asp)
+
+##### Prerequisite 
+Make sure docker is installed
+
+##### Usage
+
+```
+$ npm i
+
+# start docker (mysql db)
+$ npm run docker-compose-up
+
+# stop docker (mysql db)
+$ npm run docker-compose-down
+
+# run examples
+$ npm run start_1
+$ npm run start_2
+$ npm run start_3
+$ npm run start_4
+$ npm run start_5
+$ npm run start_6
+$ npm run start_7
+$ npm run start_8
+$ npm run start_9
+$ npm run start_10
+$ npm run start_11
+```

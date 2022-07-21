@@ -19,6 +19,7 @@
     "start_8": "node ./src/A8_demo_db_drop_table.js",
     "start_9": "node ./src/A9_demo_db_update.js",
     "start_10": "node ./src/A10_demo_db_limit.js",
+    "start_11_precreate_tables": "node ./src/A11_precreate_tables_for_demo11.js",
     "start_11": "node ./src/A11_demo_db_join.js"
 
   },

@@ -1,22 +1,21 @@
 // https://www.w3schools.com/nodejs/nodejs_mysql_delete.asp
 
-const mysql = require('mysql2');
-const {host, user, password, port, database, debug} = require("./db_config.json");
+const DB_NAME = "mydb";
 
-const con = mysql.createConnection({
-    host,
-    user,
-    password,
-    port,
-    database,
-    debug
-});
+const {createConnection} = require("./DBService");
+const con = createConnection(DB_NAME);
 
-con.connect(function(err) {
-    if (err) throw err;
-    var sql = "DELETE FROM customers WHERE address = 'Mountain 21'";
-    con.query(sql, function (err, result) {
+con.connect(
+    (err) => {
         if (err) throw err;
-        console.log("Number of records deleted: " + result.affectedRows);
-    });
-});
+        console.log("Connected!");
+
+        // Delete any record with the address "Mountain 21":
+        con.query("DELETE FROM customers WHERE address = 'Mountain 21'", (err, result) => {
+            if (err) throw err;
+            console.log("Demo[#1] Number of records deleted: ", result.affectedRows);
+        });
+
+        con.end();
+    }
+);

@@ -1,28 +1,24 @@
 // https://www.w3schools.com/nodejs/nodejs_mysql_join.asp
-const mysql = require('mysql2');
-const {host, user, password, port, database, debug} = require("./db_config.json");
 
-const con = mysql.createConnection({
-    host,
-    user,
-    password,
-    port,
-    database,
-    debug
-});
+const DB_NAME = "mydb";
 
-con.connect(function(err) {
-    if (err) throw err;
-    let sql = `SELECT users.name AS user,
-                products.name AS favorite
-        FROM users
-        JOIN products
-        ON users.favorite_product = products.id`;
-    con.query(sql, function (err, result) {
+const {createConnection} = require("./DBService");
+const con = createConnection(DB_NAME);
+
+con.connect(
+    (err) => {
         if (err) throw err;
-        console.log(result);
-    });
-});
+        console.log("Connected!");
+
+        let sql = `SELECT users.name AS user, products.name AS favorite FROM users JOIN products ON users.favorite_product = products.id`;
+        con.query(sql, function (err, result) {
+            if (err) throw err;
+            console.log(result);
+        });
+
+        con.end();
+    }
+);
 
 // // Left Join
 // // If you want to return all users, no matter if they have a favorite product or not, use the LEFT JOIN statement:

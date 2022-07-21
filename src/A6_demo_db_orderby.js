@@ -1,29 +1,27 @@
 // https://www.w3schools.com/nodejs/nodejs_mysql_orderby.asp
 
-const mysql = require('mysql2');
-const {host, user, password, port, database, debug} = require("./db_config.json");
+const DB_NAME = "mydb";
 
-const con = mysql.createConnection({
-    host,
-    user,
-    password,
-    port,
-    database,
-    debug
-});
+const {createConnection} = require("./DBService");
+const con = createConnection(DB_NAME);
 
-con.connect(function(err) {
-    if (err) throw err;
-    con.query("SELECT * FROM customers ORDER BY name", function (err, result) {
+con.connect(
+    (err) => {
         if (err) throw err;
-        console.log(result);
-    });
-});
+        console.log("Connected!");
 
-con.connect(function(err) {
-    if (err) throw err;
-    con.query("SELECT * FROM customers ORDER BY name DESC", function (err, result) {
-        if (err) throw err;
-        console.log(result);
-    });
-});
+        // Sort the result alphabetically by name:
+        con.query("SELECT * FROM customers ORDER BY name", (err, result) => {
+            if (err) throw err;
+            console.log("Demo[#1] Sort the result alphabetically by name:\n",  result);
+        });
+
+        // Sort the result reverse alphabetically by name:
+        con.query("SELECT * FROM customers ORDER BY name DESC", (err, result) => {
+            if (err) throw err;
+            console.log("Demo[#2] Sort the result reverse alphabetically by name:\n",  result);
+        });
+
+        con.end();
+    }
+);

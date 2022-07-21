@@ -1,31 +1,34 @@
 // https://www.w3schools.com/nodejs/nodejs_mysql_drop_table.asp
 
-const mysql = require('mysql2');
-const {host, user, password, port, database, debug} = require("./db_config.json");
+const DB_NAME = "mydb";
 
-const con = mysql.createConnection({
-    host,
-    user,
-    password,
-    port,
-    database,
-    debug
-});
+const {createConnection} = require("./DBService");
+const con = createConnection(DB_NAME);
 
-con.connect(function(err) {
-    if (err) throw err;
-    var sql = "DROP TABLE customers";
-    con.query(sql, function (err, result) {
+con.connect(
+    (err) => {
         if (err) throw err;
-        console.log("Table deleted");
-    });
-});
+        console.log("Connected!");
 
-con.connect(function(err) {
-    if (err) throw err;
-    var sql = "DROP TABLE IF EXISTS customers";
-    con.query(sql, function (err, result) {
-        if (err) throw err;
-        console.log(result);
-    });
-});
+        // DROP TABLE customers                 => unsafe
+        // DROP TABLE IF EXISTS customers       => safe
+        con.query("DROP TABLE IF EXISTS customers", (err, result) => {
+            if (err) throw err;
+            console.log("Demo Delete the table \"customers\" if it exists:", result);
+
+            switch (result.warningStatus) {
+                // table deleted
+                case 0:
+                    console.log("DB deleted");
+                break;
+                // table was not deleted
+                case 1:
+                    console.log("DB may not already exist");
+                break;
+            }
+
+        });
+
+        con.end();
+    }
+);
